@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snakebite Clinical Report | Hyam Institute</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1e3d2f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Case Report">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Montserrat:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181a; --ink-soft:#5b6265; --paper:#fbfbf9; --paper-alt:#f1efe9;
+    --forest:#1e3d2f; --forest-light:#3a6350; --amber:#b9862f; --line:#dedad2; --radius:14px;
+    --risk-high:#a4432b; --risk-bg:#fbf1ee;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color:var(--ink); background:var(--paper); line-height:1.5; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-weight:600; letter-spacing:-0.02em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,251,249,0.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand-lockup{display:flex; align-items:center; gap:10px;}
+  .brand-lockup img{width:26px; height:26px; object-fit:contain; display:block;}
+  .brand{font-family:'Montserrat', sans-serif; font-size:15px; font-weight:700; letter-spacing:0.01em;}
+  .navlinks{display:flex; gap:32px; font-size:14px; color:var(--ink-soft);}
+  .navlinks a:hover{color:var(--ink);}
+
+  .hero{padding:64px 0 40px; text-align:center; border-bottom:1px solid var(--line);}
+  .eyebrow{font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--forest-light); font-weight:600; margin-bottom:20px;}
+  .hero h1{font-size:clamp(28px, 3.6vw, 40px); line-height:1.15; margin-bottom:14px;}
+  .hero p{font-size:16px; color:var(--ink-soft); max-width:580px; margin:0 auto;}
+  .ref-tag{margin-top:22px; display:inline-block; font-size:12px; letter-spacing:0.08em; color:var(--ink-soft); background:var(--paper-alt); border:1px solid var(--line); border-radius:100px; padding:6px 16px;}
+
+  .app{max-width:760px; margin:0 auto; padding:48px 32px 100px;}
+
+  .progress-wrap{position:sticky; top:64px; z-index:20; background:var(--paper); padding:14px 0 12px; margin-bottom:28px;}
+  .progress-label{display:flex; justify-content:space-between; font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;}
+  .progress-track{height:4px; background:var(--line); border-radius:2px; overflow:hidden;}
+  .progress-fill{height:100%; background:var(--forest); border-radius:2px; transition:width 0.3s ease; width:0%;}
+
+  .intro-note{background:var(--paper-alt); border:1px solid var(--line); border-radius:var(--radius); padding:20px 24px; margin-bottom:40px; font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  .intro-note strong{color:var(--ink);}
+
+  .section{margin-bottom:48px;}
+  .section-header{display:flex; align-items:center; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  .section-num{font-family:'Fraunces', serif; font-size:22px; font-weight:500; color:var(--amber); min-width:26px;}
+  .section-title{font-size:16px; font-weight:600;}
+  .section-note{font-size:13px; color:var(--ink-soft); line-height:1.6; margin:-12px 0 20px;}
+  .sub-heading{font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest-light); margin:8px 0 12px;}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;}
+  .row-mb{margin-bottom:18px;}
+  .span-2{grid-column:span 2;}
+
+  .field{display:flex; flex-direction:column; gap:7px;}
+  label, .label{font-size:12px; font-weight:600; color:var(--ink-soft); letter-spacing:0.02em;}
+  .req{color:var(--risk-high); margin-left:2px;}
+  .hint{font-size:12px; color:var(--ink-soft); font-weight:400;}
+
+  input[type="text"], input[type="number"], input[type="email"], input[type="date"], input[type="time"], select, textarea{
+    width:100%; border:1.5px solid var(--line); border-radius:8px; padding:10px 13px;
+    font-family:'Inter', sans-serif; font-size:14px; color:var(--ink); background:var(--paper);
+    transition:border-color 0.15s; outline:none; resize:vertical; min-height:42px;
+  }
+  input:focus, select:focus, textarea:focus{border-color:var(--forest);}
+  select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b6265' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; appearance:none; -webkit-appearance:none; cursor:pointer;
+  }
+  textarea{min-height:100px; line-height:1.55;}
+
+  .err{font-size:12px; color:var(--risk-high); display:none; margin-top:2px;}
+  .field.error .err{display:block;}
+  .field.error > input, .field.error > select{border-color:var(--risk-high);}
+
+  /* Option groups: pills */
+  .opts{display:flex; gap:8px; flex-wrap:wrap;}
+  .opts .opt{
+    font-size:13px; font-weight:600; padding:8px 16px; border:1.5px solid var(--line); border-radius:100px;
+    background:var(--paper); color:var(--ink-soft); cursor:pointer; transition:all 0.15s; user-select:none;
+  }
+  .opts .opt:hover{border-color:var(--forest-light); color:var(--forest);}
+  .opts .opt:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  .opts .opt.active{background:var(--forest); border-color:var(--forest); color:#fff;}
+  .opts .opt.active-danger{background:var(--risk-high); border-color:var(--risk-high); color:#fff;}
+  .opts.multi .opt{border-radius:8px;}
+  .opts.multi .opt.active::before{content:"\2713\00a0";}
+
+  .sub-panel{background:var(--paper-alt); border:1px solid var(--line); border-radius:var(--radius); padding:24px; margin-top:14px;}
+  .cond{display:none;}
+  .cond.visible{display:block;}
+  .clinical-block{border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; margin-bottom:14px;}
+
+  /* Snake group selector */
+  .snake-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;}
+  .snake-grid .opt{border:1.5px solid var(--line); border-radius:10px; padding:14px 10px; text-align:center; cursor:pointer; background:var(--paper); transition:all 0.15s;}
+  .snake-grid .opt:hover{border-color:var(--forest-light);}
+  .snake-grid .opt:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  .snake-grid .opt.active{border-color:var(--forest); background:var(--paper-alt); box-shadow:inset 0 0 0 1px var(--forest);}
+  .snake-name{font-size:13px; font-weight:600; color:var(--ink); line-height:1.3; display:block;}
+  .snake-sci{font-size:11px; color:var(--ink-soft); display:block; margin-top:4px; line-height:1.35;}
+
+  /* Outcome */
+  .outcome-strip{display:grid; grid-template-columns:repeat(3, 1fr); gap:10px;}
+  .outcome-strip .opt{padding:15px 10px; border:1.5px solid var(--line); border-radius:10px; background:var(--paper); text-align:center; cursor:pointer; transition:all 0.15s; font-size:13px; font-weight:600;}
+  .outcome-strip .opt:hover{border-color:var(--forest-light);}
+  .outcome-strip .opt.active{border-color:var(--forest); background:var(--paper-alt); color:var(--forest);}
+  .outcome-strip .opt.active-danger{border-color:var(--risk-high); background:var(--risk-bg); color:var(--risk-high);}
+
+  /* Upload */
+  .upload{display:flex; align-items:center; gap:16px; border:1.5px dashed var(--line); border-radius:10px; padding:14px 16px; background:var(--paper);}
+  .upload input{font-size:13px; font-family:inherit; color:var(--ink-soft); max-width:100%;}
+  .upload img{width:64px; height:64px; object-fit:cover; border-radius:8px; display:none;}
+
+  .warning{background:var(--risk-bg); border:1px solid #ecd3ca; border-left:3px solid var(--risk-high); border-radius:10px; padding:14px 18px; font-size:13px; color:var(--ink); line-height:1.6; margin-bottom:14px;}
+  .disclaimer{background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--amber); border-radius:10px; padding:18px 22px; margin-top:16px;}
+  .disclaimer p{font-size:13px; color:var(--ink-soft); line-height:1.6;}
+  .check{display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--ink); line-height:1.55; cursor:pointer; font-weight:400;}
+  .check input{margin-top:3px; accent-color:var(--forest); width:16px; height:16px; flex:none;}
+
+  /* Submit */
+  .submit-zone{margin-top:56px; padding-top:32px; border-top:1px solid var(--line);}
+  .submit-declaration{margin-bottom:24px; padding:18px 20px; background:var(--paper-alt); border-left:3px solid var(--line); border-radius:0 10px 10px 0;}
+  .submit-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .btn{padding:14px 28px; border-radius:100px; font-size:15px; font-weight:600; cursor:pointer; border:none; transition:all 0.15s; font-family:inherit;}
+  .btn-submit{background:var(--forest); color:#fff;}
+  .btn-submit:hover{opacity:0.92;}
+  .btn-reset{background:transparent; color:var(--ink-soft); border:1.5px solid var(--line);}
+  .btn-reset:hover{border-color:var(--forest); color:var(--forest);}
+  .required-note{font-size:12px; color:var(--ink-soft); flex:1; text-align:right;}
+
+  .success-screen{display:none; text-align:center; padding:70px 0;}
+  .success-screen.visible{display:block;}
+  .success-icon{width:56px; height:56px; background:var(--forest); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px;}
+  .success-title{font-family:'Fraunces', serif; font-size:26px; font-weight:500; margin-bottom:12px;}
+  .success-body{font-size:15px; color:var(--ink-soft); line-height:1.65; max-width:440px; margin:0 auto 28px;}
+  .success-ref{font-size:13px; color:var(--ink-soft); background:var(--paper-alt); border:1px solid var(--line); border-radius:100px; padding:6px 16px; display:inline-block; margin-bottom:28px;}
+  details.record{text-align:left; margin-top:32px; border:1px solid var(--line); border-radius:10px; padding:14px 18px; background:var(--paper-alt);}
+  details.record summary{cursor:pointer; font-size:13px; font-weight:600; color:var(--ink-soft);}
+  details.record pre{font-size:12px; line-height:1.5; overflow:auto; max-height:420px; margin-top:12px; white-space:pre-wrap; word-break:break-word;}
+
+  /* Clinical photographs */
+  .photo-drop{display:flex; align-items:center; justify-content:center; gap:10px; border:1.5px dashed var(--line); border-radius:10px; padding:20px; background:var(--paper); cursor:pointer; font-size:14px; font-weight:600; color:var(--forest); transition:border-color 0.15s;}
+  .photo-drop:hover{border-color:var(--forest-light);}
+  .photo-drop input{display:none;}
+  .photo-list{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin-top:14px;}
+  .photo-card{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--paper);}
+  .photo-card img{width:100%; height:140px; object-fit:cover; display:block; background:var(--paper-alt);}
+  .photo-card .pc-body{padding:10px; display:flex; flex-direction:column; gap:8px;}
+  .photo-card .pc-name{font-size:11px; color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .photo-card select, .photo-card input{font-size:13px; padding:7px 10px; min-height:36px;}
+  .photo-card .pc-remove{font-size:12px; font-weight:600; color:var(--risk-high); background:none; border:none; cursor:pointer; text-align:left; font-family:inherit; padding:0;}
+  .photo-count{font-size:12px; color:var(--ink-soft); margin-top:10px;}
+
+  /* App: device bar, saved reports, toast */
+  .device-bar{border-bottom:1px solid var(--line); background:var(--paper-alt);}
+  .device-inner{display:flex; align-items:center; gap:14px; min-height:44px; font-size:13px; color:var(--ink-soft); flex-wrap:wrap; padding-top:8px; padding-bottom:8px;}
+  .net{font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--forest); display:inline-flex; align-items:center; gap:6px;}
+  .net::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--forest-light);}
+  .net.offline{color:var(--amber);} .net.offline::before{background:var(--amber);}
+  .link-btn{margin-left:auto; background:none; border:none; font:inherit; font-weight:600; color:var(--forest); cursor:pointer; padding:6px 0;}
+  .reports-panel{scroll-margin-top:84px; border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; margin-bottom:36px; background:var(--paper);}
+  .rp-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:6px;}
+  .rp-head h2{font-size:16px;}
+  .rp-head .btns{display:flex; gap:8px;}
+  .btn-sm{padding:8px 16px; font-size:13px;}
+  .rp-note{font-size:12px; color:var(--ink-soft); margin-bottom:14px; line-height:1.55;}
+  .rp-row{display:flex; align-items:center; gap:12px; padding:12px 0; border-top:1px solid var(--line);}
+  .rp-main{flex:1; min-width:0;}
+  .rp-ref{font-size:14px; font-weight:600; letter-spacing:0.04em;}
+  .rp-meta{font-size:12px; color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis;}
+  .rp-status{font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:4px 10px; border-radius:100px; background:var(--paper-alt); color:var(--amber); white-space:nowrap;}
+  .rp-status.sent{color:var(--forest);}
+  .rp-del{background:none; border:none; font:inherit; font-size:12px; font-weight:600; color:var(--risk-high); cursor:pointer;}
+  .rp-empty{font-size:13px; color:var(--ink-soft); padding:10px 0;}
+  .toast{position:fixed; left:50%; bottom:24px; transform:translate(-50%, 20px); background:var(--ink); color:#fff; font-size:13px; padding:12px 20px; border-radius:100px; opacity:0; pointer-events:none; transition:all 0.25s; z-index:100; max-width:calc(100% - 32px); text-align:center;}
+  .toast.show{opacity:1; transform:translate(-50%, 0);}
+
+  footer{padding:56px 0; text-align:center; border-top:1px solid var(--line);}
+  footer .brand-lockup{justify-content:center; margin-bottom:12px;}
+  footer .brand-lockup img{width:22px; height:22px;}
+  footer p{font-size:13px; color:var(--ink-soft); line-height:1.7;}
+  footer .links{margin-top:20px; display:flex; gap:24px; justify-content:center; font-size:13px; flex-wrap:wrap;}
+  footer .links a{color:var(--ink-soft);}
+  footer .links a:hover{color:var(--ink);}
+
+  @media (max-width:820px){
+    .wrap{padding:0 16px;}
+    .app{padding:32px 16px 80px;}
+    .navlinks{display:none;}
+    .grid-2, .grid-3{grid-template-columns:1fr;}
+    .span-2{grid-column:auto;}
+    .snake-grid{grid-template-columns:repeat(2, 1fr);}
+    .outcome-strip{grid-template-columns:1fr 1fr;}
+    .hero{padding:48px 0 32px;}
+    .upload{flex-direction:column; align-items:flex-start;}
+    .required-note{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="https://www.hyaminstitute.net/" target="_top"><div class="brand-lockup"><img src="data:image/png;base64,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" alt="Hyam Institute mark"><div class="brand">HYAM INSTITUTE</div></div></a>
+    <div class="navlinks">
+      <a href="https://www.hyaminstitute.net/about" target="_top">About</a>
+      <a href="https://www.hyaminstitute.net/snakekey" target="_top">SnakeKey</a>
+      <a href="https://www.hyaminstitute.net/projectone" target="_top">Project One</a>
+      <a href="https://www.hyaminstitute.net/news" target="_top">News</a>
+      <a href="https://www.hyaminstitute.net/get-in-touch" target="_top">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Clinician Portal &middot; Clinical Surveillance</div>
+    <h1>Snakebite Case Report</h1>
+    <p>The clinical reporting tool behind Project One's companion system, recording snakebite cases and outcomes worldwide in structured, anonymised form. Complete as much as you can; choose Unknown wherever you are unsure.</p>
+    <div class="ref-tag" id="formRef">REF generating&hellip;</div>
+  </div>
+</section>
+
+<div class="device-bar"><div class="wrap device-inner">
+  <span class="net" id="netStatus">Online</span>
+  <span id="deviceCount">No reports saved on this device</span>
+  <button type="button" class="link-btn" id="viewReportsBtn">Saved reports</button>
+</div></div>
+
+<div class="app">
+
+  <div class="reports-panel" id="reportsPanel" hidden>
+    <div class="rp-head"><h2>Saved on this device</h2><div class="btns"><button type="button" class="btn btn-reset btn-sm" id="exportBtn">Export all</button><button type="button" class="btn btn-reset btn-sm" id="closeReportsBtn">Close</button></div></div>
+    <p class="rp-note">Prototype: reports are kept on this device until a server is connected. Export downloads every report, with its photographs, as one JSON file for testing.</p>
+    <div id="reportsList"></div>
+  </div>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg viewBox="0 0 16 16" fill="none" width="24" height="24"><path d="M3 8L6.5 11.5L13 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 class="success-title">Report submitted</h2>
+    <p class="success-body" id="successBody">Thank you. This case has been recorded for epidemiological analysis by the Hyam Institute. Your report strengthens snakebite surveillance across every region we serve.</p>
+    <div class="success-ref" id="successRef"></div>
+    <div><button class="btn btn-submit" onclick="newReport()">Submit another report</button></div>
+    <details class="record"><summary>View the data record</summary><pre id="recordOut"></pre></details>
+  </div>
+
+  <div id="mainForm">
+
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Required fields</span><span id="progressText">0% complete</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <div class="intro-note">
+      This data is used solely for epidemiological research and advocacy by the Hyam Institute to reduce death and disability from snakebite. <strong>Do not enter the patient's name, address, village, phone number or any hospital record number.</strong> Fields marked <span class="req">*</span> are needed for a usable case record; everything else is optional but valuable.
+    </div>
+
+    <!-- 01 LOCATION -->
+    <div class="section" data-sec="facility">
+      <div class="section-header"><span class="section-num">01</span><span class="section-title">Facility &amp; Location</span></div>
+      <div class="grid-3 row-mb">
+        <div class="field" data-req>
+          <label for="country">Country<span class="req">*</span></label>
+          <select id="country"><option value="">Select&hellip;</option></select>
+          <span class="err">Please select a country</span>
+        </div>
+        <div class="field" data-req>
+          <label for="region">State / Province / Region<span class="req">*</span></label>
+          <input type="text" id="region" placeholder="First level region">
+          <span class="err">Please enter the region</span>
+        </div>
+        <div class="field">
+          <label for="district">District / County</label>
+          <input type="text" id="district" placeholder="Second level area">
+        </div>
+      </div>
+      <div class="grid-2 row-mb">
+        <div class="field" data-req>
+          <label for="facilityName">Facility name<span class="req">*</span></label>
+          <input type="text" id="facilityName" placeholder="Hospital, clinic or health centre">
+          <span class="err">Please enter the facility name</span>
+        </div>
+        <div class="field">
+          <label for="facilityType">Facility type</label>
+          <select id="facilityType">
+            <option value="">Select&hellip;</option>
+            <option>Health post / dispensary</option>
+            <option>Primary health centre / clinic</option>
+            <option>District or regional hospital</option>
+            <option>Tertiary / teaching hospital</option>
+            <option>Private hospital or clinic</option>
+            <option>Mission / NGO hospital</option>
+            <option>Military hospital</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">Where did the bite occur?</span>
+        <div class="opts" data-key="biteArea">
+          <div class="opt">Same district as facility</div><div class="opt">Another district</div><div class="opt">Another country</div><div class="opt">Unknown</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 PATIENT -->
+    <div class="section" data-sec="patient">
+      <div class="section-header"><span class="section-num">02</span><span class="section-title">Patient</span></div>
+      <div class="section-note">Age is recorded in bands so that rural cases cannot be traced back to an individual.</div>
+      <div class="grid-2 row-mb">
+        <div class="field" data-req>
+          <label for="ageBand">Age band<span class="req">*</span></label>
+          <select id="ageBand">
+            <option value="">Select&hellip;</option>
+            <option>Under 1</option><option>1 to 4</option><option>5 to 9</option><option>10 to 14</option><option>15 to 19</option>
+            <option>20 to 29</option><option>30 to 39</option><option>40 to 49</option><option>50 to 59</option>
+            <option>60 to 69</option><option>70 to 79</option><option>80 and over</option><option>Unknown</option>
+          </select>
+          <span class="err">Please select an age band</span>
+        </div>
+        <div class="field">
+          <label for="occupation">Occupation</label>
+          <select id="occupation">
+            <option value="">Select&hellip;</option>
+            <option>Farmer / agricultural worker</option>
+            <option>Plantation worker</option>
+            <option>Herder / pastoralist</option>
+            <option>Fisher</option>
+            <option>Forestry worker</option>
+            <option>Construction / manual labourer</option>
+            <option>Home duties / domestic worker</option>
+            <option>Child or student</option>
+            <option>Hunter / forager</option>
+            <option>Snake handler, rescuer or herpetologist</option>
+            <option>Healthcare worker</option>
+            <option>Military / security</option>
+            <option>Other outdoor work</option>
+            <option>Indoor / office work</option>
+            <option>Not working / retired</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">Sex<span class="req">*</span></span>
+        <div class="opts" data-key="sex" data-req>
+          <div class="opt">Male</div><div class="opt">Female</div><div class="opt">Not recorded</div>
+        </div>
+        <span class="err">Please select an option</span>
+      </div>
+      <div class="cond" data-show-if="sex=Female">
+        <div class="field" style="margin-top:18px">
+          <span class="label">Pregnant at time of bite?</span>
+          <div class="opts" data-key="pregnant">
+            <div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 BITE CIRCUMSTANCES -->
+    <div class="section" data-sec="circumstances">
+      <div class="section-header"><span class="section-num">03</span><span class="section-title">Bite Circumstances</span></div>
+      <div class="grid-2 row-mb">
+        <div class="field" data-req>
+          <label for="biteDate">Date of bite<span class="req">*</span></label>
+          <input type="date" id="biteDate">
+          <span class="err">Please enter the date of the bite</span>
+        </div>
+        <div class="field">
+          <label for="biteTime">Approximate time of bite <span class="hint">(if known)</span></label>
+          <input type="time" id="biteTime">
+        </div>
+      </div>
+      <div class="field row-mb">
+        <span class="label">Time of day</span>
+        <div class="opts" data-key="timeOfDay">
+          <div class="opt">Morning</div><div class="opt">Afternoon</div><div class="opt">Evening</div><div class="opt">Night</div><div class="opt">Unknown</div>
+        </div>
+      </div>
+      <div class="grid-2 row-mb">
+        <div class="field">
+          <label for="activity">Activity at time of bite</label>
+          <select id="activity">
+            <option value="">Select&hellip;</option>
+            <option>Farming / field work</option>
+            <option>Herding livestock</option>
+            <option>Walking or travelling on foot</option>
+            <option>Sleeping</option>
+            <option>Working in or around the home</option>
+            <option>Collecting water, firewood or food</option>
+            <option>Playing</option>
+            <option>Fishing / in water</option>
+            <option>Toileting outdoors</option>
+            <option>Trying to catch or kill the snake</option>
+            <option>Professional snake handling</option>
+            <option>Other</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="setting">Setting</label>
+          <select id="setting">
+            <option value="">Select&hellip;</option>
+            <option>Inside the home</option>
+            <option>Around the home (yard, compound)</option>
+            <option>Field, crop or plantation</option>
+            <option>Pasture or grazing land</option>
+            <option>Forest or bush</option>
+            <option>Road or path</option>
+            <option>River, lake or sea</option>
+            <option>Other</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+      </div>
+      <div class="cond" data-show-if="activity=Sleeping">
+        <div class="sub-panel" style="margin:0 0 18px">
+          <div class="grid-2">
+            <div class="field">
+              <span class="label">Sleeping on</span>
+              <div class="opts" data-key="sleepingOn"><div class="opt">Floor or ground</div><div class="opt">Raised bed</div><div class="opt">Unknown</div></div>
+            </div>
+            <div class="field">
+              <span class="label">Under a bed net?</span>
+              <div class="opts" data-key="bedNet"><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="biteSite">Part of body bitten</label>
+          <select id="biteSite">
+            <option value="">Select&hellip;</option>
+            <option>Foot or ankle</option><option>Lower leg</option><option>Thigh</option>
+            <option>Hand or fingers</option><option>Forearm or arm</option>
+            <option>Head or neck</option><option>Trunk</option><option>Multiple sites</option>
+            <option>No bite (venom in eye only)</option><option>Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="footwear">Footwear at time of bite</label>
+          <select id="footwear">
+            <option value="">Select&hellip;</option>
+            <option>Barefoot</option><option>Sandals / open shoes</option><option>Closed shoes</option><option>Boots</option><option>Unknown</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 SNAKE -->
+    <div class="section" data-sec="snake">
+      <div class="section-header"><span class="section-num">04</span><span class="section-title">Snake Identification</span></div>
+      <div class="section-note">Choose the group that best fits. If you know the species, add it below.</div>
+      <div class="snake-grid opts-cards" data-key="snakeGroup" data-req>
+        <div class="opt"  data-v="Cobra"><span class="snake-name">Cobra</span><span class="snake-sci">Including spitting cobras and king cobra</span></div>
+        <div class="opt" data-v="Mamba"><span class="snake-name">Mamba</span><span class="snake-sci">Dendroaspis</span></div>
+        <div class="opt" data-v="Krait"><span class="snake-name">Krait</span><span class="snake-sci">Bungarus</span></div>
+        <div class="opt" data-v="Other elapid"><span class="snake-name">Other elapid</span><span class="snake-sci">Coral snakes, taipans, brown snakes</span></div>
+        <div class="opt" data-v="Sea snake"><span class="snake-name">Sea snake</span><span class="snake-sci">Hydrophiinae</span></div>
+        <div class="opt" data-v="Viper or adder"><span class="snake-name">Viper or adder</span><span class="snake-sci">Puff adder, Russell's, saw-scaled</span></div>
+        <div class="opt" data-v="Pit viper"><span class="snake-name">Pit viper</span><span class="snake-sci">Rattlesnakes, lanceheads, habus</span></div>
+        <div class="opt" data-v="Rear fanged"><span class="snake-name">Rear fanged</span><span class="snake-sci">Boomslang, twig snakes, keelbacks</span></div>
+        <div class="opt" data-v="Burrowing asp"><span class="snake-name">Burrowing asp</span><span class="snake-sci">Atractaspis (stiletto snakes)</span></div>
+        <div class="opt" data-v="Harmless species"><span class="snake-name">Harmless species</span><span class="snake-sci">Non venomous snake confirmed</span></div>
+        <div class="opt" data-v="Other"><span class="snake-name">Other</span><span class="snake-sci">Describe below</span></div>
+        <div class="opt" data-v="Unknown"><span class="snake-name">Unknown</span><span class="snake-sci">Snake not seen or not identified</span></div>
+      </div>
+      <div class="field"><span class="err" style="margin-top:8px">Please select a snake group</span></div>
+
+      <div class="grid-2" style="margin-top:20px">
+        <div class="field">
+          <label for="species">Species <span class="hint">(scientific or local name, if known)</span></label>
+          <input type="text" id="species" placeholder="e.g. Bitis arietans">
+        </div>
+        <div class="field">
+          <label for="idMethod">How was the snake identified?</label>
+          <select id="idMethod">
+            <option value="">Select&hellip;</option>
+            <option>Snake brought to facility</option>
+            <option>Photograph of the snake</option>
+            <option>Identified by a snake expert</option>
+            <option>Description by patient or witness</option>
+            <option>Inferred from clinical signs</option>
+            <option>Not identified</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" style="margin-top:18px">
+        <span class="label">Confidence in identification</span>
+        <div class="opts" data-key="idConfidence">
+          <div class="opt">Confirmed</div><div class="opt">Probable</div><div class="opt">Possible</div><div class="opt">Not applicable</div>
+        </div>
+      </div>
+      <div class="cond" data-show-if="snakeGroup=Other|Unknown">
+        <div class="field" style="margin-top:18px">
+          <label for="snakeDescription">Describe the snake</label>
+          <input type="text" id="snakeDescription" placeholder="Colour, pattern, length, head shape, behaviour">
+        </div>
+      </div>
+      <div class="field" style="margin-top:18px">
+        <label for="snakePhoto">Photograph of the snake <span class="hint">(optional, helps SnakeKey curators verify the species)</span></label>
+        <div class="upload">
+          <img id="photoPreview" alt="Snake photo preview">
+          <input type="file" id="snakePhoto" accept="image/*">
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 PRE HOSPITAL -->
+    <div class="section" data-sec="beforeHospital">
+      <div class="section-header"><span class="section-num">05</span><span class="section-title">Before Reaching Hospital</span></div>
+      <div class="field row-mb">
+        <span class="label">First aid or remedies used <span class="hint">(select all that apply)</span></span>
+        <div class="opts multi" data-key="firstAid">
+          <div class="opt" data-exclusive>None</div>
+          <div class="opt">Pressure immobilisation bandage</div><div class="opt">Splint / immobilisation</div>
+          <div class="opt">Tourniquet</div><div class="opt">Incision or cutting</div><div class="opt">Suction</div>
+          <div class="opt">Traditional healer</div><div class="opt">Herbal or topical remedy</div>
+          <div class="opt">Snake stone / black stone</div><div class="opt">Electric shock</div><div class="opt">Ice or heat</div>
+          <div class="opt">Other</div><div class="opt" data-exclusive>Unknown</div>
+        </div>
+      </div>
+      <div class="cond" data-show-if="firstAid~Traditional healer">
+        <div class="field row-mb">
+          <label for="healerHours">Hours spent with traditional healer</label>
+          <input type="number" id="healerHours" min="0" step="0.5" placeholder="e.g. 6" style="max-width:220px">
+        </div>
+      </div>
+      <div class="grid-2 row-mb">
+        <div class="field">
+          <label for="firstContact">First point of care</label>
+          <select id="firstContact">
+            <option value="">Select&hellip;</option>
+            <option>This facility</option>
+            <option>Another health facility</option>
+            <option>Traditional healer</option>
+            <option>Pharmacy / drug seller</option>
+            <option>Community health worker</option>
+            <option>None</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="transport">Main transport to this facility</label>
+          <select id="transport">
+            <option value="">Select&hellip;</option>
+            <option>On foot / carried</option>
+            <option>Bicycle or motorcycle</option>
+            <option>Car, taxi or private vehicle</option>
+            <option>Public transport</option>
+            <option>Ambulance</option>
+            <option>Animal cart</option>
+            <option>Boat</option>
+            <option>Other</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-2 row-mb">
+        <div class="field">
+          <label for="hoursToFirstFacility">Hours from bite to first health facility</label>
+          <input type="number" id="hoursToFirstFacility" min="0" step="0.5" placeholder="e.g. 3">
+        </div>
+        <div class="field">
+          <label for="hoursToThisFacility">Hours from bite to this facility</label>
+          <input type="number" id="hoursToThisFacility" min="0" step="0.5" placeholder="e.g. 7">
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">Referred from another facility?</span>
+        <div class="opts" data-key="referredIn"><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+      </div>
+    </div>
+
+    <!-- 06 CLINICAL FEATURES -->
+    <div class="section" data-sec="clinicalFeatures">
+      <div class="section-header"><span class="section-num">06</span><span class="section-title">Clinical Features</span></div>
+      <div class="section-note">Record the signs seen at any point during the admission. These allow analysis even when the snake was never identified.</div>
+
+      <div class="clinical-block">
+        <div class="sub-heading">Local effects</div>
+        <div class="field row-mb">
+          <span class="label">Maximum extent of swelling</span>
+          <div class="opts" data-key="swellingExtent">
+            <div class="opt">None</div><div class="opt">Bite site only</div><div class="opt">To wrist or ankle</div><div class="opt">To elbow or knee</div><div class="opt">Whole limb</div><div class="opt">Beyond the limb</div>
+          </div>
+        </div>
+        <div class="opts multi" data-key="localSigns">
+          <div class="opt">Blistering</div><div class="opt">Bruising</div><div class="opt">Necrosis</div><div class="opt">Suspected compartment syndrome</div><div class="opt">Local infection / abscess</div>
+        </div>
+      </div>
+
+      <div class="clinical-block">
+        <div class="sub-heading">Bleeding and clotting</div>
+        <div class="field row-mb">
+          <span class="label">20 minute whole blood clotting test (20WBCT)</span>
+          <div class="opts" data-key="wbct20"><div class="opt">Blood clotted</div><div class="opt" data-danger>Not clotted</div><div class="opt">Not done</div></div>
+        </div>
+        <div class="opts multi" data-key="bleeding">
+          <div class="opt" data-exclusive>No bleeding</div><div class="opt">Bite site</div><div class="opt">Gums</div><div class="opt">Blood in urine</div><div class="opt">Gastrointestinal</div><div class="opt">Intracranial</div><div class="opt">Other bleeding</div>
+        </div>
+      </div>
+
+      <div class="clinical-block">
+        <div class="sub-heading">Neurotoxic signs</div>
+        <div class="opts multi" data-key="neurotoxic">
+          <div class="opt" data-exclusive>None</div><div class="opt">Ptosis</div><div class="opt">Double vision / ophthalmoplegia</div><div class="opt">Difficulty swallowing</div><div class="opt">Slurred speech</div><div class="opt">Limb weakness</div><div class="opt">Respiratory paralysis</div>
+        </div>
+      </div>
+
+      <div class="clinical-block">
+        <div class="sub-heading">Other systemic effects</div>
+        <div class="opts multi" data-key="systemic">
+          <div class="opt" data-exclusive>None</div><div class="opt">Shock / hypotension</div><div class="opt">Acute kidney injury</div><div class="opt">Dark urine (myoglobin)</div><div class="opt">Muscle pain or tenderness</div><div class="opt">Venom in the eye</div><div class="opt">Vomiting</div><div class="opt">Abdominal pain</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="label">Overall severity of envenoming</span>
+        <div class="opts" data-key="severity">
+          <div class="opt">No envenoming (dry bite)</div><div class="opt">Mild</div><div class="opt">Moderate</div><div class="opt" data-danger>Severe</div><div class="opt">Unknown</div>
+        </div>
+      </div>
+      <div class="clinical-block" style="margin-top:22px">
+        <div class="sub-heading">Photographs of the bite</div>
+        <div class="section-note" style="margin:0 0 14px">Add as many images as you wish, labelling each with the stage of treatment. Frame the wound only: <strong>exclude the face, tattoos, jewellery, wristbands and anything else that could identify the patient.</strong> Photographs are re-saved on this device to remove location and camera data before they are stored.</div>
+        <label class="photo-drop">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          Add photographs
+          <input type="file" class="bite-photo-input" accept="image/*" multiple>
+        </label>
+        <div class="photo-list" id="photoList"></div>
+        <div class="photo-count" id="photoCount"></div>
+        <div class="cond" data-show-if="hasBitePhotos=yes">
+          <div class="field" style="margin-top:14px">
+            <label class="check"><input type="checkbox" id="photoConsent"> The patient (or a parent or guardian) has given consent for these photographs to be used for research and training.</label>
+            <span class="err">Consent is required before photographs can be submitted. Remove the photographs if consent has not been given.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 ANTIVENOM -->
+    <div class="section" data-sec="antivenom">
+      <div class="section-header"><span class="section-num">07</span><span class="section-title">Antivenom</span></div>
+      <div class="field">
+        <span class="label">Was antivenom given?<span class="req">*</span></span>
+        <div class="opts" data-key="antivenomGiven" data-req><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+        <span class="err">Please indicate whether antivenom was given</span>
+      </div>
+
+      <div class="cond" data-show-if="antivenomGiven=Yes">
+        <div class="sub-panel">
+          <div class="grid-2 row-mb">
+            <div class="field">
+              <label for="avProduct">Product name</label>
+              <input type="text" id="avProduct" placeholder="As printed on the vial">
+            </div>
+            <div class="field">
+              <label for="avManufacturer">Manufacturer</label>
+              <input type="text" id="avManufacturer" placeholder="If known">
+            </div>
+          </div>
+          <div class="field row-mb">
+            <span class="label">Type</span>
+            <div class="opts" data-key="avType"><div class="opt">Polyvalent</div><div class="opt">Monovalent</div><div class="opt">Unknown</div></div>
+          </div>
+          <div class="grid-3 row-mb">
+            <div class="field">
+              <label for="avHoursToFirstDose">Hours from bite to first dose</label>
+              <input type="number" id="avHoursToFirstDose" min="0" step="0.5" placeholder="e.g. 5">
+            </div>
+            <div class="field">
+              <label for="avTotalVials">Total vials given</label>
+              <input type="number" id="avTotalVials" min="1" max="200" placeholder="e.g. 10">
+            </div>
+            <div class="field">
+              <label for="avDoses">Number of doses</label>
+              <input type="number" id="avDoses" min="1" max="20" placeholder="e.g. 2">
+            </div>
+          </div>
+          <div class="grid-2 row-mb">
+            <div class="field">
+              <label for="avRoute">Route</label>
+              <select id="avRoute">
+                <option value="">Select&hellip;</option>
+                <option>Intravenous infusion</option>
+                <option>Intravenous injection</option>
+                <option>Intramuscular</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="avBatch">Batch number <span class="hint">(optional)</span></label>
+              <input type="text" id="avBatch" placeholder="From the vial label">
+            </div>
+          </div>
+          <div class="field row-mb">
+            <span class="label">Antivenom availability</span>
+            <div class="opts" data-key="avAvailability">
+              <div class="opt">Available immediately</div><div class="opt">Delayed by supply</div><div class="opt" data-danger>Ran out during treatment</div><div class="opt">Unknown</div>
+            </div>
+          </div>
+          <div class="field row-mb">
+            <span class="label">Premedication given?</span>
+            <div class="opts" data-key="avPremedication"><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+          </div>
+          <div class="field">
+            <span class="label">Adverse reaction to antivenom</span>
+            <div class="opts" data-key="avReaction">
+              <div class="opt">None</div><div class="opt">Mild early reaction</div><div class="opt" data-danger>Anaphylaxis</div><div class="opt">Late serum sickness</div><div class="opt">Unknown</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cond" data-show-if="antivenomGiven=No">
+        <div class="sub-panel">
+          <div class="field">
+            <span class="label">Main reason antivenom was not given</span>
+            <div class="opts" data-key="avNotGivenReason">
+              <div class="opt">Not indicated</div><div class="opt" data-danger>Not available</div><div class="opt">Patient or family declined</div><div class="opt">Cost</div><div class="opt">Died before treatment</div><div class="opt">Other</div><div class="opt">Unknown</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 OTHER TREATMENT -->
+    <div class="section" data-sec="otherTreatment">
+      <div class="section-header"><span class="section-num">08</span><span class="section-title">Other Treatment</span></div>
+      <div class="field row-mb">
+        <span class="label">Select all that apply</span>
+        <div class="opts multi" data-key="treatments">
+          <div class="opt" data-exclusive>None</div>
+          <div class="opt">Mechanical ventilation</div><div class="opt">Manual bag ventilation</div><div class="opt">Neostigmine / anticholinesterase</div>
+          <div class="opt">Dialysis</div><div class="opt">Blood or blood products</div><div class="opt">ICU admission</div>
+          <div class="opt">Fasciotomy</div><div class="opt">Debridement</div><div class="opt">Skin graft</div>
+          <div class="opt">Antibiotics</div><div class="opt">Tetanus prophylaxis</div><div class="opt">Eye irrigation</div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="lengthOfStay">Length of stay (days)</label>
+        <input type="number" id="lengthOfStay" min="0" max="365" placeholder="e.g. 4" style="max-width:220px">
+      </div>
+    </div>
+
+    <!-- 09 OUTCOME -->
+    <div class="section" data-sec="outcome">
+      <div class="section-header"><span class="section-num">09</span><span class="section-title">Clinical Outcome</span></div>
+      <div class="field">
+        <span class="label">Patient outcome<span class="req">*</span></span>
+        <div class="outcome-strip opts-cards" data-key="outcome" data-req>
+          <div class="opt">Recovered fully</div>
+          <div class="opt">Recovered with lasting effects</div>
+          <div class="opt" data-danger>Died</div>
+          <div class="opt">Transferred elsewhere</div>
+          <div class="opt">Left against medical advice</div>
+          <div class="opt">Still in care / unknown</div>
+        </div>
+        <span class="err">Please select a patient outcome</span>
+      </div>
+
+      <div class="cond" data-show-if="outcome=Died">
+        <div class="sub-panel">
+          <div class="field row-mb">
+            <span class="label">When did death occur?</span>
+            <div class="opts" data-key="deathTiming">
+              <div class="opt">Before arrival</div><div class="opt">Within 24 hours of arrival</div><div class="opt">After 24 hours</div><div class="opt">After discharge</div><div class="opt">Unknown</div>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Principal cause of death <span class="hint">(select all that apply)</span></span>
+            <div class="opts multi" data-key="deathCause">
+              <div class="opt">Respiratory failure</div><div class="opt">Bleeding</div><div class="opt">Kidney failure</div><div class="opt">Shock</div><div class="opt">Reaction to antivenom</div><div class="opt">Infection / sepsis</div><div class="opt" data-exclusive>Unknown</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cond" data-show-if="outcome=Transferred elsewhere">
+        <div class="sub-panel">
+          <div class="field">
+            <span class="label">Reason for transfer</span>
+            <div class="opts" data-key="transferReason">
+              <div class="opt">For antivenom</div><div class="opt">For ventilation / ICU</div><div class="opt">For dialysis</div><div class="opt">For surgery</div><div class="opt">Other</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:22px">
+        <span class="label">Amputation required?<span class="req">*</span></span>
+        <div class="opts" data-key="amputation" data-req><div class="opt">No</div><div class="opt">Yes</div><div class="opt">Unknown</div></div>
+        <span class="err">Please indicate amputation status</span>
+      </div>
+      <div class="cond" data-show-if="amputation=Yes">
+        <div class="grid-2" style="margin-top:16px">
+          <div class="field">
+            <label for="ampPart">Body part amputated</label>
+            <select id="ampPart">
+              <option value="">Select&hellip;</option>
+              <option>Finger(s)</option><option>Hand</option><option>Arm, below elbow</option><option>Arm, above elbow</option>
+              <option>Toe(s)</option><option>Foot</option><option>Leg, below knee</option><option>Leg, above knee</option><option>Multiple / other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ampLevel">Amputation level</label>
+            <select id="ampLevel"><option value="">Select&hellip;</option><option>Partial</option><option>Complete</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:22px">
+        <span class="label">Lasting effects at discharge <span class="hint">(select all that apply)</span></span>
+        <div class="opts multi" data-key="lastingEffects">
+          <div class="opt" data-exclusive>None known</div>
+          <div class="opt">Reduced limb function</div><div class="opt">Contracture</div><div class="opt">Chronic ulcer</div>
+          <div class="opt">Kidney damage</div><div class="opt">Visual impairment</div><div class="opt">Psychological distress</div><div class="opt">Unable to return to usual work</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 HOUSEHOLD -->
+    <div class="section" data-sec="household">
+      <div class="section-header"><span class="section-num">10</span><span class="section-title">Family &amp; Household Impact</span></div>
+      <div class="section-note">This helps the Hyam Institute show the wider cost of snakebite to families, particularly after death or disability. Record only what the patient or family tell you; all fields are optional.</div>
+      <div class="grid-3 row-mb">
+        <div class="field">
+          <span class="label">Marital status</span>
+          <div class="opts" data-key="marital"><div class="opt">Single</div><div class="opt">Married / partnered</div><div class="opt">Widowed</div><div class="opt">Unknown</div></div>
+        </div>
+        <div class="field">
+          <span class="label">Main earner in household?</span>
+          <div class="opts" data-key="mainEarner"><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+        </div>
+        <div class="field">
+          <label for="householdSize">Household size (people)</label>
+          <input type="number" id="householdSize" min="1" max="40" placeholder="e.g. 5">
+        </div>
+      </div>
+      <div class="grid-3 row-mb">
+        <div class="field">
+          <label for="depChildren">Dependent children</label>
+          <input type="number" id="depChildren" min="0" max="20" placeholder="e.g. 3">
+        </div>
+        <div class="field">
+          <label for="childrenAgeRange">Age range of children</label>
+          <select id="childrenAgeRange">
+            <option value="">Select&hellip;</option>
+            <option>All under 5</option><option>All under 12</option><option>Mixed ages, under 18</option><option>Some adult children</option><option>Not applicable</option>
+          </select>
+        </div>
+        <div class="field">
+          <span class="label">Elderly dependants</span>
+          <div class="opts" data-key="elderly"><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+        </div>
+      </div>
+      <div class="grid-2 row-mb">
+        <div class="field">
+          <label for="costMetBy">Treatment costs met by</label>
+          <select id="costMetBy">
+            <option value="">Select&hellip;</option>
+            <option>Free public care</option>
+            <option>Health insurance or state scheme</option>
+            <option>Family paid</option>
+            <option>Charity / NGO</option>
+            <option>A mix of the above</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="daysWorkLost">Estimated days patient unable to work</label>
+          <input type="number" id="daysWorkLost" min="0" max="3650" placeholder="e.g. 30">
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">Did the family borrow money or sell assets to pay for care?</span>
+        <div class="opts" data-key="hardship"><div class="opt">Yes</div><div class="opt">No</div><div class="opt">Unknown</div></div>
+      </div>
+    </div>
+
+    <!-- 11 CLINICIAN -->
+    <div class="section" data-sec="clinician">
+      <div class="section-header"><span class="section-num">11</span><span class="section-title">Reporting Clinician</span></div>
+      <div class="grid-2 row-mb">
+        <div class="field">
+          <label for="reporterRole">Your role</label>
+          <select id="reporterRole">
+            <option value="">Select&hellip;</option>
+            <option>Doctor</option>
+            <option>Specialist / consultant</option>
+            <option>Clinical officer / medical assistant</option>
+            <option>Nurse or midwife</option>
+            <option>Community health worker</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="clinicianName">Name <span class="hint">(optional)</span></label>
+          <input type="text" id="clinicianName" placeholder="Dr">
+        </div>
+      </div>
+      <div class="grid-3 row-mb">
+        <div class="field">
+          <label for="regNumber">Registration number <span class="hint">(optional)</span></label>
+          <input type="text" id="regNumber" placeholder="Professional registration">
+        </div>
+        <div class="field">
+          <label for="regBody">Registering body</label>
+          <input type="text" id="regBody" placeholder="e.g. national medical council">
+        </div>
+        <div class="field">
+          <label for="clinicianEmail">Contact email <span class="hint">(optional)</span></label>
+          <input type="email" id="clinicianEmail" placeholder="For follow up queries only">
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="contactConsent"> I agree that the Hyam Institute may contact me about this report.</label>
+      <div class="disclaimer">
+        <p>Your registration details help us verify reports and maintain data integrity. They are stored separately from the case data, held securely and never published. If you do not have them to hand, leave these fields blank.</p>
+      </div>
+    </div>
+
+    <!-- 12 NOTES -->
+    <div class="section" data-sec="notes">
+      <div class="section-header"><span class="section-num">12</span><span class="section-title">Clinical Notes</span></div>
+      <div class="warning">Please do not include names, villages, phone numbers or record numbers in this box.</div>
+      <div class="field">
+        <label for="notes">Additional observations</label>
+        <textarea id="notes" placeholder="Anything not captured above: complications, laboratory results, unusual features of the case, or lessons for other clinicians."></textarea>
+      </div>
+    </div>
+
+    <div class="submit-zone">
+      <div class="submit-declaration">
+        <label class="check"><input type="checkbox" id="declaration"> I confirm that this is an accurate clinical record, that it contains no information that could identify the patient, and I consent to the de-identified data being used by the Hyam Institute for epidemiological research and advocacy.</label>
+        <span class="err" id="declarationErr">Please confirm the declaration before submitting</span>
+      </div>
+      <div class="submit-row">
+        <button class="btn btn-submit" onclick="submitForm()">Submit Report &rarr;</button>
+        <button class="btn btn-reset" onclick="clearForm()">Clear form</button>
+        <span class="required-note"><span class="req">*</span> Required fields</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="https://www.hyaminstitute.net/" target="_top"><div class="brand-lockup"><img src="data:image/png;base64,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" alt="Hyam Institute mark"><div class="brand">HYAM INSTITUTE</div></div></a>
+    <p>
+      &copy; 2026 Hyam Technologies Ltd. All rights reserved.<br>
+      Part of Hyam Technologies Ltd, registered in England &amp; Wales.<br>
+      71&ndash;75 Shelton Street, Covent Garden, London WC2H 9JQ &middot; Company No. 17075210
+    </p>
+    <div class="links">
+      <a href="https://www.hyaminstitute.net/" target="_top">Home</a>
+      <a href="https://www.hyaminstitute.net/about" target="_top">About</a>
+      <a href="https://www.hyaminstitute.net/projectone" target="_top">Project One</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
