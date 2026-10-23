@@ -3,9 +3,9 @@
 (function(){
   const splash = document.getElementById('splash');
   if (!splash) return;
-  let seen = false;
-  try { seen = sessionStorage.getItem('clinicalEntered') === '1'; } catch (e) {}
-  if (seen) { splash.remove(); document.body.classList.remove('splash-open'); return; }
+  /* "Submit another report" opens the form directly (?continue=1); every other launch plays the reveal */
+  const skipOnce = /[?&]continue=1/.test(location.search);
+  if (skipOnce) { try { history.replaceState(null, '', location.pathname); } catch (e) {} }
 
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.getElementById('clinLogo'), root = document.getElementById('clinStage');
@@ -52,24 +52,46 @@
     tweenTo(n, instant);
   }
   function play(){
+    timers.forEach(clearTimeout); timers = [];
+    root.classList.remove('alive'); splash.classList.remove('ready');
+    const els = root.querySelectorAll('*');
+    els.forEach(e => e.style.transition = 'none');
     setStage(0, true); void svg.getBoundingClientRect();
+    els.forEach(e => e.style.transition = '');
     const at = [300,2700,4300,5700,7100,8700,10600,12700,15200,17600];
     at.forEach((t, i) => timers.push(setTimeout(() => setStage(i + 1), reduced ? 0 : t)));
     timers.push(setTimeout(() => root.classList.add('alive'), reduced ? 0 : 2200));
     timers.push(setTimeout(() => splash.classList.add('ready'), reduced ? 0 : 19500));
   }
+  let wordBuilt = false, open = false;
+  function show(){
+    open = true;
+    splash.style.display = ''; splash.classList.remove('leaving');
+    document.body.classList.add('splash-open');
+    window.scrollTo(0, 0);
+    if (wordBuilt) play();
+  }
   function enter(){
-    if (splash.classList.contains('leaving')) return;
-    try { sessionStorage.setItem('clinicalEntered', '1'); } catch (e) {}
+    if (!open) return;
+    open = false;
     splash.classList.add('leaving');
     document.body.classList.remove('splash-open');
-    setTimeout(() => { timers.forEach(clearTimeout); cancelAnimationFrame(raf); splash.remove(); }, reduced ? 0 : 600);
+    setTimeout(() => { timers.forEach(clearTimeout); cancelAnimationFrame(raf); if (!open) splash.style.display = 'none'; }, reduced ? 0 : 600);
   }
+  /* Replay whenever the app comes back to the screen after being away for a few seconds */
+  let hiddenAt = 0;
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) hiddenAt = Date.now();
+    else if (hiddenAt && Date.now() - hiddenAt > 4000) show();
+  });
+  window.addEventListener('pageshow', e => { if (e.persisted) show(); });
   splash.addEventListener('click', enter);
   splash.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enter(); } });
 
   const ready = (document.fonts && document.fonts.load)
     ? Promise.race([document.fonts.load('400 142px "Inter"').then(() => document.fonts.ready), new Promise(r => setTimeout(r, 2500))]).catch(() => {})
     : Promise.resolve();
-  ready.then(() => { buildWord(); play(); });
+  if (skipOnce) { splash.style.display = 'none'; document.body.classList.remove('splash-open'); }
+  else open = true;
+  ready.then(() => { buildWord(); wordBuilt = true; if (open) play(); });
 })();

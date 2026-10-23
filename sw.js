@@ -1,6 +1,6 @@
 /* Service worker: lets the form open and work with no connection */
-const CACHE = 'hyam-case-report-v2';
-const SHELL = ['./', './index.html', './app.js', './manifest.webmanifest',
+const CACHE = 'hyam-case-report-v4';
+const SHELL = ['./', './index.html', './app.js', './splash.js', './manifest.webmanifest',
   './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

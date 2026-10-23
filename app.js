@@ -389,9 +389,9 @@ async function clearForm(){
   if (!confirm('Clear all fields and start a new report?')) return;
   clearTimeout(saveTimer);
   await DB.del('drafts', 'current').catch(() => {});
-  location.reload();
+  location.replace('./index.html?continue=1');
 }
-function newReport(){ location.reload(); }
+function newReport(){ location.replace('./index.html?continue=1'); }
 
 function toast(msg){
   const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
